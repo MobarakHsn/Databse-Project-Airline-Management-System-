@@ -1,0 +1,64 @@
+1.Show all the phone number of the employee whose last name is Sabbir. 
+Ans:
+select el_name,ephone
+from management,management_1
+where management.e_id=management_1.e_id and el_name='Sabbir'
+
+2.Find the employee name and salary who earns highest amount of salary. 
+
+
+select el_name,salary
+from management,management_2
+where management.j_id=management_2.j_id and salary=(select max(salary)
+from management_2)
+
+3. what is the nationality of the passenger whose name is first name is Shakira.
+
+select first_name,nationality
+from passenger
+where first_name='Shakira'
+
+4.Show the seat no, class name,price flight no of the passenger whose name is first name  is Ariyan 
+
+select first_name,seat_no,class_name,price,flight_no
+from passenger, booking,booking_1
+where passenger.booking_id=booking.booking_id and booking.cp_id=booking_1.cp_id and passenger.first_name='Ariyan'
+
+5.Create a view named “view_1” for showing all the class name and price of the class and rename class_name to “class” from table booking_1.
+
+create view view_1
+as select class_name "class",price
+from booking_1
+
+6.Display route and duration of flight number 303.
+select flight_no,route,duration
+from flight,flight_1
+where flight.r_id=flight_1.r_id and flight_no=303
+
+
+7.Find the employee’s first name and last name who were hired between '12-MAR-15' and current date.
+
+select ef_name,el_name
+from management
+where hiredate between '12-MAR-15' and sysdate
+
+8.Show the names  of the employee whose city is “Dhaka”.
+
+select ef_name,el_name
+from management,address
+where management.ad_id=address.ad_id and city='Dhaka'
+
+9.Find the job ID for each job of an employee whose salary greater than 50000. 
+
+select j_id
+from management_2
+where salary >50000
+
+10.Find the employee name whose name start with ‘C’ and 4th word is ‘l’ and finish with ‘s’.
+select el_name
+from management
+where el_name like 'C__l%s'
+
+
+
+
